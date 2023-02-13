@@ -1,5 +1,8 @@
+require './person.rb'
+
+# Blueprint for Teacher objects
 class Teacher < Person
-    def(name="Unknown", age, parent_permission=true, specialization)
+    def initialize(name="Unknown", age, parent_permission = true, specialization)
         super(name, age, parent_permission)
         @specialization = specialization
     end

@@ -1,3 +1,4 @@
+# Blueprint for Person objects
 class Person
     attr_accessor :name, :age
     attr_reader :id

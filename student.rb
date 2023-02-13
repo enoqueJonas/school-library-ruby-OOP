@@ -1,5 +1,6 @@
-require './person.rb'
+require_relative './person.rb'
 
+# Blueprint for Student objects
 class Student < Person
     def initialize(name="Unknown", age, parent_permission=true, classroom)
         super(name, age, parent_permission)
