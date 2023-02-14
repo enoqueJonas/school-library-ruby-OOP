@@ -1,4 +1,4 @@
-require './nameable_decorator.rb'
+require './decorators/nameable_decorator.rb'
 
 # Blueprint for Person objects
 class Person < Nameable

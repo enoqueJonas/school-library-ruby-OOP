@@ -1,4 +1,4 @@
-require '../nameable_decorator.rb'
+require './nameable_decorator.rb'
 
 class BaseDecorator < Nameable
     def initialize(nameable)
