@@ -1,5 +1,7 @@
+require './nameable_decorator.rb'
+
 # Blueprint for Person objects
-class Person
+class Person < Nameable
   attr_accessor :name, :age, :parent_permission
   attr_reader :id
 
@@ -16,6 +18,10 @@ class Person
 
   def can_use_services?
     of_age? || parent_permission
+  end
+
+  def correct_name
+    @name
   end
   private :of_age?
 end
