@@ -9,6 +9,6 @@ class Classroom
 
     def addStudent(student)
         @students.push(student)
-        student.owner = self
+        student.classroom = self
     end
 end
