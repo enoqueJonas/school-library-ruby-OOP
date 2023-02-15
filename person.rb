@@ -1,5 +1,5 @@
 require './decorators/nameable_decorator'
-require_relative './rental.rb'
+require_relative './rental'
 
 # Blueprint for Person objects
 class Person < Nameable
