@@ -36,8 +36,14 @@ class App
         stu = Student.new(age, @classroom, name, permission)
 
         @people << stu
-    elseif 
-
+    elseif answer == 2
+        puts "Name: "
+        name = gets.chomp
+        puts "Age: "
+        age = gets.chomp
+        puts "Specialization:  "
+        teacher = Teacher.new(age, specialization, name)
+        @people << teacher
     end
   end
 end
