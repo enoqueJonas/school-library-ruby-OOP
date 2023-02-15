@@ -30,6 +30,6 @@ class Person < Nameable
     @rentals.push(rental)
     rental.person = self
   end
-  
+
   private :of_age?
 end
