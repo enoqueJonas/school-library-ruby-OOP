@@ -7,11 +7,7 @@ class Student < Person
   def initialize(age, classroom, name = 'Unknown', parent_permission: true)
     super(age, parent_permission, name)
     @classroom = classroom
-  end
-
-  def classroom=(classroom)
-    @classroom = classroom
-    classroom.animals.push(self) unless classroom.animals.include?(self)
+    classroom.students << self
   end
 
   def play_hooky
