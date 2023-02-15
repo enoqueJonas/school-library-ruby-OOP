@@ -9,6 +9,6 @@ class Rental
     book.rentals << self
 
     @person = person
-    person.rentals.push << self
+    person.rentals << self
   end
 end
