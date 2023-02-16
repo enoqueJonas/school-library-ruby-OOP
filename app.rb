@@ -22,35 +22,41 @@ class App
     puts 'Book created succesfully'
   end
 
+  def create_student
+    puts 'Name: '
+    name = gets.chomp
+    puts 'Age: '
+    age = gets.chomp
+    puts 'Has parent permission[y/n]?: '
+    gets.chomp
+    @classroom = Classroom.new('Class A') if @classroom.nil?
+    stu = Student.new(age, @classroom, name)
+
+    @people << stu
+    puts 'Student created succesfully'
+  end
+
+  def create_teacher
+    puts 'Name: '
+    name = gets.chomp
+    puts 'Age: '
+    age = gets.chomp
+    puts 'Specialization:  '
+    specialization = gets.chomp
+    teacher = Teacher.new(age, specialization, name)
+    @people << teacher
+    puts 'Teacher created succesfully'
+  end
+
   def create_person
     puts 'Create a student (1) or teacher (2)?'
     answer = gets.chomp
-    if answer == '1'
-      puts 'Name: '
-      name = gets.chomp
-      puts 'Age: '
-      age = gets.chomp
-      puts 'Has parent permission[y/n]?: '
-      perm_a = gets.chomp
 
-      permission = false
-      permission = true if perm_a == 'y'
-
-      @classroom = Classroom.new('Class A') if @classroom.nil?
-      stu = Student.new(age, @classroom, name)
-
-      @people << stu
-      puts 'Student created succesfully'
-    elsif answer == '2'
-      puts 'Name: '
-      name = gets.chomp
-      puts 'Age: '
-      age = gets.chomp
-      puts 'Specialization:  '
-      specialization = gets.chomp
-      teacher = Teacher.new(age, specialization, name)
-      @people << teacher
-      puts 'Teacher created succesfully'
+    case answer
+    when '1'
+      create_student
+    when '2'
+      create_teacher
     else
       puts 'Invalid choice'
       create_person
