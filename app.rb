@@ -51,7 +51,6 @@ class App
   def create_person
     puts 'Create a student (1) or teacher (2)?'
     answer = gets.chomp
-
     case answer
     when '1'
       create_student

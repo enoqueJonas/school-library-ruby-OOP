@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require './person'
 require './decorators/captilized_decorator'
 require './decorators/trim_decorator'
