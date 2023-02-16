@@ -1,7 +1,9 @@
 require './person'
 require './decorators/captilized_decorator'
 require './decorators/trim_decorator'
-require_relative './app.rb'
+require_relative './app'
+
+@app = App.new
 
 def menu_text
   puts "Please choose an option by entering a number: \n
@@ -16,26 +18,27 @@ def menu_text
 end
 
 def menu(option)
-    app = App.new
   case option
-  when "1"
-    app.list_books
-  when "2"
-    app.list_people
-  when "3"
-    app.create_person
-  when "4"
-    app.create_book
-  when "5"
-    app.create_rental
-  when "6"
-    app.list_rentals
+  when '1'
+    puts @app.list_books
+  when '2'
+    @app.list_people
+  when '3'
+    @app.create_person
+  when '4'
+    @app.create_book
+  when '5'
+    @app.create_rental
+  when '6'
+    puts 'Type ID of person: '
+    id = gets.chomp
+    @app.list_rentals(id.to_i)
   end
 end
 
 def main
   menu_option = 0
-  while menu_option != "7"
+  while menu_option != '7'
     menu_text
     menu_option = gets.chomp
     menu(menu_option)
