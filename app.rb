@@ -1,7 +1,7 @@
-require_relative './book.rb'
-require_relative './classroom.rb'
-require_relative './student.rb'
-require_relative './rental.rb'
+require_relative './book'
+require_relative './classroom'
+require_relative './student'
+require_relative './rental'
 
 class App
   def initialize
@@ -12,46 +12,46 @@ class App
   end
 
   def create_book
-    puts "Title?"
+    puts 'Title?'
     title = gets.chomp
-    puts "Author"
+    puts 'Author'
     author = gets.chomp
     book = Book.new(title, author)
     @books << book
-    puts "Book created succesfully"
+    puts 'Book created succesfully'
   end
 
   def create_person
-    puts "Create a student (1) or teacher (2)?"
+    puts 'Create a student (1) or teacher (2)?'
     answer = gets.chomp
     if answer == 1
-        puts "Name: "
-        name = gets.chomp
-        puts "Age: "
-        age = gets.chomp
-        puts "Has parent permission[y/n]?: "
-        permA = gets.chomp
+      puts 'Name: '
+      name = gets.chomp
+      puts 'Age: '
+      age = gets.chomp
+      puts 'Has parent permission[y/n]?: '
+      perm_a = gets.chomp
 
-        permission = false
-        permission = true if permA == 's'
+      permission = false
+      permission = true if perm_a == 's'
 
-        @classroom = Classroom.new('Class A') if @classroom == nil
-        stu = Student.new(age, @classroom, name, permission)
+      @classroom = Classroom.new('Class A') if @classroom.nil?
+      stu = Student.new(age, @classroom, name, permission)
 
-        @people << stu
-        puts "Student created succesfully"
-    elseif answer == 2
-        puts "Name: "
-        name = gets.chomp
-        puts "Age: "
-        age = gets.chomp
-        puts "Specialization:  "
-        teacher = Teacher.new(age, specialization, name)
-        @people << teacher
-        puts "Teacher created succesfully"
+      @people << stu
+      puts 'Student created succesfully'
+      elseif answer == 2
+      puts 'Name: '
+      name = gets.chomp
+      puts 'Age: '
+      age = gets.chomp
+      puts 'Specialization:  '
+      teacher = Teacher.new(age, specialization, name)
+      @people << teacher
+      puts 'Teacher created succesfully'
     else
-        puts "Invalid choice"
-        create_person()
+      puts 'Invalid choice'
+      create_person
     end
   end
 
@@ -68,24 +68,24 @@ class App
   end
 
   def list_rentals(id)
-    @rentals.each_with_index do |rental|
+    @rentals.each do |rental|
       puts "#{index}) #{rental}" if id == rental.person.id
     end
   end
 
   def create_rental
-    puts "Select a book from the following by number (not id): "
-    list_books()
+    puts 'Select a book from the following by number (not id): '
+    list_books
     book_nr = gets.chomp
     book = @books[book_nr]
-    puts "Select a person from the following by number (not id): "
-    list_people()
+    puts 'Select a person from the following by number (not id): '
+    list_people
     person_nr = gets.chomp
     person = @people[person_nr]
-    puts "Date: "
+    puts 'Date: '
     date = gets.chomp
     rental = Rental.new(date, book, person)
     @rentals << rental
-    puts "Rental created succesfully"
+    puts 'Rental created succesfully'
   end
 end
