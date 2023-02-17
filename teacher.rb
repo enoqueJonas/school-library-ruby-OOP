@@ -2,8 +2,8 @@ require_relative './person'
 
 # Blueprint for Teacher objects
 class Teacher < Person
-  def initialize(age, specialization, name = 'Unknown', parent_permission: true)
-    super(age, name, parent_permission)
+  def initialize(age, specialization, name = 'Unknown')
+    super(age, name)
     @specialization = specialization
   end
 
