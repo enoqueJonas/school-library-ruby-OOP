@@ -39,7 +39,7 @@ def menu(option)
 end
 
 def main
-  menu_option = 0
+  menu_option = ''
   while menu_option != '7'
     menu_text
     menu_option = gets.chomp
