@@ -35,6 +35,8 @@ def menu(option)
     puts 'Type ID of person: '
     id = gets.chomp
     @app.list_rentals(id.to_i)
+  when '7'
+
   end
 end
 
