@@ -38,10 +38,37 @@ def menu(option)
     id = gets.chomp
     @app.list_rentals(id.to_i)
   when '7'
-    puts "Enter"
-    @f_manage.write_on_file(Rental.file_name, @app.rentals)
-    @f_manage.write_on_file(Book.file_name, @app.books)
-    @f_manage.write_on_file(Person.file_name, @app.people)
+    books_arr = []
+    people_arr = []
+    rentals_arr = []
+    @app.books.each do |book|
+      obj = {
+        :title => book.title,
+        :author => book.author
+      }
+      books_arr << obj
+    end
+
+    @app.rentals.each do |rental|
+      obj = {
+        :book_title => rental.book.title,
+        :person => rental.person.name,
+        :date => rental.date
+      }
+      rentals_arr << obj
+    end
+
+    @app.people.each do |person|
+      obj = {
+        :name => person.name,
+        :age => person.age
+      }
+      rentals_arr << obj
+    end    
+    
+    @f_manage.write_on_file(Rental.file_name, rentals_arr)
+    @f_manage.write_on_file(Book.file_name, books_arr)
+    @f_manage.write_on_file(Person.file_name, people_arr)
   end
 end
 
