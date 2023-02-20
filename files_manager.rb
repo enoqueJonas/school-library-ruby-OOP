@@ -1,6 +1,12 @@
 require 'json'
 
 def write_on_file(file_name, data) 
-    ruby = JSON.generate(data)
-    File.write('file_name', data, mode: "a")
+    json = JSON.generate(data)
+    File.write('file_name', json, mode: "a")
+end
+
+
+def read_file(file_name)
+    data = JSON.parse(File.read(file_name))
+    data
 end
