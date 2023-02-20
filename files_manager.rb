@@ -6,7 +6,6 @@ module FileManage
         File.write('file_name', json, mode: "a")
     end
     
-    
     def read_file(file_name)
         data = JSON.parse(File.read(file_name))
         data
