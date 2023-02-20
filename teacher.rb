@@ -10,8 +10,4 @@ class Teacher < Person
   def can_use_services?
     true
   end
-
-  def self.file_name
-    "people.json"
-  end
 end

@@ -1,9 +1,12 @@
 require 'json'
 
-module FileManage
+class FileManage
+    def initialize
+    end
+
     def write_on_file(file_name, data) 
         json = JSON.generate(data)
-        File.write('file_name', json, mode: "a")
+        File.write(file_name, json, mode: "a")
     end
     
     def read_file(file_name)

@@ -5,6 +5,7 @@ require_relative './rental'
 require_relative './teacher'
 
 class App
+  attr_reader :books, :people, :rentals
   def initialize
     @books = []
     @people = []

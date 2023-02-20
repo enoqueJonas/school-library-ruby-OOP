@@ -31,5 +31,9 @@ class Person < Nameable
     Rental.new(date, book, self)
   end
 
+  def self.file_name
+    "people.json"
+  end
+
   private :of_age?
 end

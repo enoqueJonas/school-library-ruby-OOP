@@ -4,8 +4,10 @@ require './person'
 require './decorators/captilized_decorator'
 require './decorators/trim_decorator'
 require_relative './app'
+require_relative './files_manager.rb'
 
 @app = App.new
+@f_manage = FileManage.new
 
 def menu_text
   puts "Please choose an option by entering a number: \n
@@ -36,7 +38,10 @@ def menu(option)
     id = gets.chomp
     @app.list_rentals(id.to_i)
   when '7'
-
+    puts "Enter"
+    @f_manage.write_on_file(Rental.file_name, @app.rentals)
+    @f_manage.write_on_file(Book.file_name, @app.books)
+    @f_manage.write_on_file(Person.file_name, @app.people)
   end
 end
 
