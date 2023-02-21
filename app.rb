@@ -6,6 +6,7 @@ require_relative './teacher'
 
 class App
   attr_reader :books, :people, :rentals
+
   def initialize
     @books = []
     @people = []
@@ -19,8 +20,8 @@ class App
     puts 'Author'
     author = gets.chomp
     @books << {
-      :title => title,
-      :author => author
+      title: title,
+      author: author
     }
     puts 'Book created succesfully'
   end
@@ -35,11 +36,11 @@ class App
     @classroom = Classroom.new('Class A') if @classroom.nil?
     stu = Student.new(age, @classroom, name)
     @people << {
-      :id => stu.id,
-      :type => "Student",
-      :age => age,
-      :classroom =>  @classroom,
-      :name => name
+      id: stu.id,
+      type: 'Student',
+      age: age,
+      classroom: @classroom,
+      name: name
     }
     puts 'Student created succesfully'
   end
@@ -53,11 +54,11 @@ class App
     specialization = gets.chomp
     teacher = Teacher.new(age, specialization, name)
     @people << {
-      :id => teacher.id,
-      :type => "Teacher",
-      :age => age,
-      :specialization => specialization,
-      :name => name
+      id: teacher.id,
+      type: 'Teacher',
+      age: age,
+      specialization: specialization,
+      name: name
     }
     puts 'Teacher created succesfully'
   end
@@ -85,15 +86,15 @@ class App
   end
 
   def add_people_from_file(p_arr = [])
-    @people = @people + p_arr if p_arr != []
+    @people += p_arr if p_arr != []
   end
 
   def add_books_from_file(arr = [])
-    @books = @books + arr if arr != []
+    @books += arr if arr != []
   end
 
   def add_rentals_from_file(arr = [])
-    @rentals = @rentals + arr if arr != []
+    @rentals += arr if arr != []
   end
 
   def list_people
@@ -124,9 +125,9 @@ class App
     puts 'Date: '
     date = gets.chomp
     @rentals << {
-      :date => date,
-      :book => book,
-      :person => person
+      date: date,
+      book: book,
+      person: person
     }
     puts 'Rental created succesfully'
   end

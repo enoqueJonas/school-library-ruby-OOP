@@ -4,7 +4,7 @@ require './person'
 require './decorators/captilized_decorator'
 require './decorators/trim_decorator'
 require_relative './app'
-require_relative './files_manager.rb'
+require_relative './files_manager'
 
 @app = App.new
 @f_manage = FileManage.new
@@ -20,6 +20,13 @@ def menu_text
     7 - Exit
 "
 end
+
+def write_on_files
+  @f_manage.write_on_file(Rental.file_name, @app.rentals)
+  @f_manage.write_on_file(Book.file_name, @app.books)
+  @f_manage.write_on_file(Person.file_name, @app.people)
+end
+# rubocop:disable Metrics/CyclomaticComplexity
 
 def menu(option)
   case option
@@ -38,11 +45,11 @@ def menu(option)
     id = gets.chomp
     @app.list_rentals(id.to_i)
   when '7'
-    @f_manage.write_on_file(Rental.file_name, @app.rentals)
-    @f_manage.write_on_file(Book.file_name, @app.books)
-    @f_manage.write_on_file(Person.file_name, @app.people)
+    write_on_files
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity
 
 def main
   @app.add_rentals_from_file(@f_manage.read_file(Rental.file_name))

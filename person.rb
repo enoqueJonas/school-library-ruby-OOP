@@ -32,7 +32,7 @@ class Person < Nameable
   end
 
   def self.file_name
-    "people.json"
+    'people.json'
   end
 
   private :of_age?

@@ -15,6 +15,6 @@ class Book
   end
 
   def self.file_name
-    "books.json"
+    'books.json'
   end
 end

@@ -13,6 +13,6 @@ class Rental
   end
 
   def self.file_name
-    "rentals.json"
+    'rentals.json'
   end
 end
