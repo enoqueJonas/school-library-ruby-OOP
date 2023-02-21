@@ -38,44 +38,15 @@ def menu(option)
     id = gets.chomp
     @app.list_rentals(id.to_i)
   when '7'
-    # books_arr = []
-    # people_arr = []
-    # rentals_arr = []
-    # @app.books.each do |book|
-    #   obj = {
-    #     :title => book.title,
-    #     :author => book.author
-    #   }
-    #   books_arr << obj
-    # end
-
-    # @app.rentals.each do |rental|
-    #   obj = {
-    #     :book_title => rental.book.title,
-    #     :person => rental.person.name,
-    #     :date => rental.date
-    #   }
-    #   rentals_arr << obj
-    # end
-
-    # @app.people.each do |person|
-    #   obj = {
-    #     :name => person.name,
-    #     :age => person.age
-    #   }
-    #   people_arr << obj
-    # end    
-
-    # @f_manage.write_on_file(Rental.file_name, @app.rentals)
+    @f_manage.write_on_file(Rental.file_name, @app.rentals)
     @f_manage.write_on_file(Book.file_name, @app.books)
-    # @f_manage.write_on_file(Person.file_name, @app.people)
+    @f_manage.write_on_file(Person.file_name, @app.people)
   end
 end
 
 def main
-  # @app.rentals <<  @f_manage.read_file(Rental.file_name)
-  # @f_manage.read_file(Book.file_name)
-  # @app.add_people_from_file(@f_manage.read_file(Person.file_name))
+  @app.add_rentals_from_file(@f_manage.read_file(Rental.file_name))
+  @app.add_people_from_file(@f_manage.read_file(Person.file_name))
   @app.add_books_from_file(@f_manage.read_file(Book.file_name))
   menu_option = ''
   while menu_option != '7'

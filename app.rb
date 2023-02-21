@@ -92,6 +92,10 @@ class App
     @books = @books + arr if arr != []
   end
 
+  def add_rentals_from_file(arr = [])
+    @rentals = @rentals + arr if arr != []
+  end
+
   def list_people
     @people.each_with_index do |person, index|
       puts "#{index}) [#{person[:type]}] Name: #{person[:name]}, ID: #{person[:id]}, Age: #{person[:age]}"
@@ -102,9 +106,9 @@ class App
     puts "ID of person: #{id}
     Rentals: \n"
     @rentals.each do |rental|
-      next unless id == rental.person.id
+      next unless id == rental[:person][:id]
 
-      puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
+      puts "Date: #{rental[:date]}, Book: #{rental[:book][:title]} by #{rental[:book][:author]}"
     end
   end
 
@@ -119,7 +123,6 @@ class App
     person = @people[person_nr.to_i]
     puts 'Date: '
     date = gets.chomp
-    rental = Rental.new(date, book, person)
     @rentals << {
       :date => date,
       :book => book,
