@@ -1,1 +1,1 @@
-[{"id":355,"type":"Student","age":"23","classroom":"#<Classroom:0x00007fa4fe0fc260>","name":"st01"},{"id":815,"type":"Teacher","age":"43","specialization":"s01","name":"te01"}]
+[{"id":626,"type":"Student","age":"22","classroom":"#<Classroom:0x0000013bb7ea5a30>","name":"jhon"},{"id":90,"type":"Teacher","age":"33","specialization":"math","name":"Maria"}]

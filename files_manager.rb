@@ -7,9 +7,9 @@ class FileManage
   end
 
   def read_file(file_name)
-    file = File.read(file_name)
-
-    if file.empty?
+    if File.exist?(file_name)
+      file = File.read(file_name)
+    else
       write_on_file(file_name, [])
       file = File.read(file_name)
     end
