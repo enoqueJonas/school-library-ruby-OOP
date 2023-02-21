@@ -7,12 +7,8 @@ class FileManage
   end
 
   def read_file(file_name)
-    if File.exist?(file_name)
-      file = File.read(file_name)
-    else
-      write_on_file(file_name, [])
-      file = File.read(file_name)
-    end
+    write_on_file(file_name, []) unless File.exist?(file_name)
+    file = File.read(file_name)
 
     JSON.parse(file, { symbolize_names: true })
   end
