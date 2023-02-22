@@ -13,4 +13,8 @@ class Book
   def add_rental(date, person)
     Rental.new(date, self, person)
   end
+
+  def self.file_name
+    'books.json'
+  end
 end

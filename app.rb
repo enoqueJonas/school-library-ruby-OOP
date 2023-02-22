@@ -5,6 +5,8 @@ require_relative './rental'
 require_relative './teacher'
 
 class App
+  attr_reader :books, :people, :rentals
+
   def initialize
     @books = []
     @people = []
@@ -17,8 +19,10 @@ class App
     title = gets.chomp
     puts 'Author'
     author = gets.chomp
-    book = Book.new(title, author)
-    @books << book
+    @books << {
+      title: title,
+      author: author
+    }
     puts 'Book created succesfully'
   end
 
@@ -31,8 +35,13 @@ class App
     gets.chomp
     @classroom = Classroom.new('Class A') if @classroom.nil?
     stu = Student.new(age, @classroom, name)
-
-    @people << stu
+    @people << {
+      id: stu.id,
+      type: 'Student',
+      age: age,
+      classroom: @classroom,
+      name: name
+    }
     puts 'Student created succesfully'
   end
 
@@ -44,7 +53,13 @@ class App
     puts 'Specialization:  '
     specialization = gets.chomp
     teacher = Teacher.new(age, specialization, name)
-    @people << teacher
+    @people << {
+      id: teacher.id,
+      type: 'Teacher',
+      age: age,
+      specialization: specialization,
+      name: name
+    }
     puts 'Teacher created succesfully'
   end
 
@@ -65,14 +80,26 @@ class App
   def list_books
     str = ''
     @books.each_with_index do |book, index|
-      str += "#{index}) Title: #{book.title}, Author: #{book.author} \n"
+      str += "#{index}) Title: #{book[:title]}, Author: #{book[:author]} \n"
     end
     str
   end
 
+  def add_people_from_file(p_arr = [])
+    @people += p_arr if p_arr != []
+  end
+
+  def add_books_from_file(arr = [])
+    @books += arr if arr != []
+  end
+
+  def add_rentals_from_file(arr = [])
+    @rentals += arr if arr != []
+  end
+
   def list_people
     @people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      puts "#{index}) [#{person[:type]}] Name: #{person[:name]}, ID: #{person[:id]}, Age: #{person[:age]}"
     end
   end
 
@@ -80,9 +107,9 @@ class App
     puts "ID of person: #{id}
     Rentals: \n"
     @rentals.each do |rental|
-      next unless id == rental.person.id
+      next unless id == rental[:person][:id]
 
-      puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
+      puts "Date: #{rental[:date]}, Book: #{rental[:book][:title]} by #{rental[:book][:author]}"
     end
   end
 
@@ -97,8 +124,11 @@ class App
     person = @people[person_nr.to_i]
     puts 'Date: '
     date = gets.chomp
-    rental = Rental.new(date, book, person)
-    @rentals << rental
+    @rentals << {
+      date: date,
+      book: book,
+      person: person
+    }
     puts 'Rental created succesfully'
   end
 end

@@ -49,7 +49,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://github.com/enoqueJonas/morse-code-ruby)
+- Coming Soon
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -72,6 +72,10 @@ In order to run this project you need:
 **To get a local copy up and running follow these simple steps.**
 - you can clone this repo by typing `git clone https://github.com/enoqueJonas/school-library-ruby-OOP.git`.
 - type `cd school-library-ruby-OOP` to access the project on terminal.
+- run `ruby main.rb` to start the app and type the number of the option you want to use
+
+![option](https://user-images.githubusercontent.com/111214189/220468222-cbdf96f5-650a-4d4a-b02a-211abdbca1b1.png)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -84,7 +88,12 @@ In order to run this project you need:
 
 - GitHub: [@enoqueJonas](https://github.com/enoqueJonas)
 - Twitter: [@enoque_jonas](https://twitter.com/enoque_jonas)
-- LinkedIn: [@Enoque Macanda](https://www.linkedin.com/mwlite/in/enoque-macanda) 
+- LinkedIn: [@Enoque Macanda](https://www.linkedin.com/mwlite/in/enoque-macanda)
+
+👤 **Sebastian Martin**
+
+- GitHub: [@sebalp100](https://github.com/sebalp100)
+- LinkedIn: [Sebastian Martin](https://www.linkedin.com/in/sebastian-martin-956b2724a/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

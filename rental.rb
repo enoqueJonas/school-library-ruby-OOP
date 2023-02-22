@@ -11,4 +11,8 @@ class Rental
     @person = person
     person.rentals << self
   end
+
+  def self.file_name
+    'rentals.json'
+  end
 end

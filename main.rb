@@ -4,8 +4,10 @@ require './person'
 require './decorators/captilized_decorator'
 require './decorators/trim_decorator'
 require_relative './app'
+require_relative './files_manager'
 
 @app = App.new
+@f_manage = FileManage.new
 
 def menu_text
   puts "Please choose an option by entering a number: \n
@@ -18,6 +20,13 @@ def menu_text
     7 - Exit
 "
 end
+
+def write_on_files
+  @f_manage.write_on_file(Rental.file_name, @app.rentals)
+  @f_manage.write_on_file(Book.file_name, @app.books)
+  @f_manage.write_on_file(Person.file_name, @app.people)
+end
+# rubocop:disable Metrics/CyclomaticComplexity
 
 def menu(option)
   case option
@@ -35,10 +44,17 @@ def menu(option)
     puts 'Type ID of person: '
     id = gets.chomp
     @app.list_rentals(id.to_i)
+  when '7'
+    write_on_files
   end
 end
 
+# rubocop:enable Metrics/CyclomaticComplexity
+
 def main
+  @app.add_rentals_from_file(@f_manage.read_file(Rental.file_name))
+  @app.add_people_from_file(@f_manage.read_file(Person.file_name))
+  @app.add_books_from_file(@f_manage.read_file(Book.file_name))
   menu_option = ''
   while menu_option != '7'
     menu_text
